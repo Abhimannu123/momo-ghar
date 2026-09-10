@@ -1,0 +1,12 @@
+# Protect sensitive folders from direct web access
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Deny access to config folder from the web (PHP files here should only be included, not requested directly)
+<FilesMatch "\.(sql|md)$">
+  Require all denied
+</FilesMatch>
